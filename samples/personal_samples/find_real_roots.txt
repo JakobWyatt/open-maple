@@ -1,0 +1,14 @@
+quadratic_user := proc (a, b, c)
+	return [(-b - sqrt(b^2 - 4 * a * c))/(2 * a), (-b + sqrt(b^2 - 4 * a * c))/(2 * a)];
+	end;
+
+find_real_roots := proc (a, b, c) 
+	discriminant := b^2 - 4 * a * c;
+	roots := [];
+	if discriminant > 0 then
+		roots := quadratic_user(a, b, c);
+	elif discriminant = 0 then
+		roots := [-b/(2*a)];
+	end if;
+	return roots;
+	end;

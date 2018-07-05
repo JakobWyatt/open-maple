@@ -1,0 +1,7 @@
+power := proc (n)
+	fn_return := proc (x)
+		return x^n;
+	end proc;
+
+	return fn_return;
+end proc;

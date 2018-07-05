@@ -1,0 +1,16 @@
+roll_dice := proc()
+	x := rand(1 ... 6)();
+	if x = 1 then
+		print(this);
+	elif x = 2 then
+		print(exersise);
+	elif x = 3 then
+		print("is");
+	elif x = 4 then
+		print(so);
+	elif x = 5 then
+		print(boring);
+	elif x = 6 then
+		print(test);
+	end if;
+end proc;

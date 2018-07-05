@@ -1,0 +1,22 @@
+prime_numbers_to := proc (limit) 
+	if limit < 2 then
+		return [];
+	end if;
+	
+	primes := [2];
+	for i from 3 by 2 to limit do
+		currently_prime := true;
+		for j from 1 by 1 to nops(primes) do
+			if i mod primes[j] = 0 then
+				currently_prime := false;
+				break;
+			end if;
+		end do;
+		
+		if currently_prime = true then
+			primes := [primes[], i];
+		end if;
+	end do;
+
+	return primes;
+end;

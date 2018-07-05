@@ -1,0 +1,41 @@
+mod2pi := x -> x - floor(x/(2*Pi)) * 2 * Pi;
+
+sin_m := proc (x, min_accuracy)
+	s := 0;
+	ai := x;
+	i := 3;
+	while abs(evalf(ai)) > min_accuracy do
+		s := s + ai;
+		ai := -ai * x^(2) / ((i - 1) * i);
+		i := i + 2;
+	end do;
+
+	print(i - 2);
+	return evalf(s);
+end proc;
+
+sin_m_rec := proc (x, min_accuracy)
+	if is (x<0) then
+		return -sin_m_rec(-x, min_accuracy);
+	elif is(x > 2 * Pi) then
+		return sin_m_rec(mod2pi(x), min_accuracy);
+	else
+		return sin_m(x, min_accuracy);
+	fi;
+end;
+
+cos_m := proc (x, min_accuracy)
+	s := 0;
+	ai := 1;
+	i := 2;
+	while abs(ai) > min_accuracy do
+		s := s + ai;
+		ai := -ai * x^(2) / (i * (i-1));
+		i := i + 2;
+	end do;
+
+	print(i - 2);
+	return evalf(s);
+end proc;
+
+trig_mac := proc(type)

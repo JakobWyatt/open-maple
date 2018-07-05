@@ -1,0 +1,9 @@
+maclaurin := proc(number, tolerance)
+	comp_e := 0;
+	i := 0;
+	while (abs(evalf(exp(number)) - comp_e) > tolerance) do
+		comp_e := comp_e + (number^i)/(i!);
+		i := i + 1;
+	end do;
+	return evalf(comp_e);
+end proc;

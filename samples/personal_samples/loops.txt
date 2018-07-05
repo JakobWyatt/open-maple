@@ -1,0 +1,16 @@
+random_loop := proc()
+	prod := 1;
+	for i from 1 to 5 do
+		prod := prod * i;
+	end do;
+	print(prod);
+	print(\n);
+
+	prod := 1;
+	i := 1;
+	while i < 6 do
+		prod := prod * i;
+		i := i + 1;
+	end do;
+	print(prod);
+end proc;
