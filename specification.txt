@@ -1,24 +1,19 @@
 This specification outlines the features currently supported in the open_maple language.
 This specification can be considered a 'language standard' for the purposes of this project.
 
-Mathematical operators:
-    Mathematical operators currently supported in open_maple are:
-        Multiplication (*)
-        Division (/)
-        Addition (+)
-        Subtraction (-)
+This current version of open_maple can be considered a "procedural" programming language,
+    consisting of multiple statements that are evaluated in order.
 
-Assignment:
-    Variables can be assigned in open_maple by using the syntax
-    [variable-name] := [mathematical expression]
+These statements are seperated by semicolons [;]
+Within a statement, variables can be assigned values via the syntax
+    [name] := [expression]
 
-The following list shows the precedance of these operators,
-    with operators at the beginning of the list being evaluated first.
-    When operators have the same precedence, the expression is evaluated left-to-right.
-        Multiplication | Division
-        Addition | Subtraction
-        Assignment
+Names must not contain the following characters
+    [; : = * / + -]
+Or begin with the following characters
+    [; : = * / + - 1 2 3 4 5 6 7 8 9 0 .]
 
-Whitespace is not considered between operators.
-Variable names are case sensitive.
-Statements are seperated by semicolons ";"
+Any valid mathematical expression containing variables, operators, and numbers is an [expression]
+Operators currently supported in open_maple are
+    Multiplication [*] | Division [/]
+    Addition [+] | Subtraction [-]
