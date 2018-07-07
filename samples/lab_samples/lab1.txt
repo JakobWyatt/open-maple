@@ -1,0 +1,4 @@
+prod := 1;
+  for i to 5 do
+    prod := prod * i;
+  od;

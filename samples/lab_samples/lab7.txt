@@ -1,0 +1,18 @@
+newton := proc(f, x1, toler)
+                    local Df, xi, fxi, Dfxi, nextxi, i;
+                    xi := x1;
+                    Df := D(f);
+                    printf("  i   |    xi   |  f(xi)  |  f’(xi)   |  xi+1  \n");
+                    printf("-----------------------------------------------\n");
+                    for i do
+                       fxi  := f(xi);
+                       Dfxi := Df(xi);
+                       nextxi := xi - fxi/Dfxi;
+                       printf(" %4d | %6e | %6e | %6e | %6e\n",
+                              i, xi, fxi, Dfxi, nextxi);
+                       xi := nextxi;
+                       if is(abs(f(xi)) < toler) then
+                         break;
+fi; od;
+                    return evalf(xi);
+                  end;

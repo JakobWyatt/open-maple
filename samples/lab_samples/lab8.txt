@@ -1,0 +1,6 @@
+
+     fx := x^3;
+     fdashx := diff(fx, x);
+     fdashdashx := diff(fx, x, x);
+     fdashdashx := diff(fx, x$2);
+     

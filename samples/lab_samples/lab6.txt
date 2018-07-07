@@ -1,0 +1,21 @@
+sinx := proc(x)
+                 if is(x < 0) then
+                   printf("sin(%g) = -sin(%g)\n", x, -x);
+                   return -sinx(-x)
+                 elif is(x > 2 * Pi) then
+                   printf("sin(%g) = sin(%g)\n", x, mod2pi(x));
+                   return sinx(mod2pi(x))
+                 elif is(x > Pi) then
+                   printf("sin(%g) = sin(%g)\n", x, x - 2*Pi);
+                   return sinx(x - 2*Pi)
+                 elif is(x > Pi/2) then
+                   printf("sin(%g) = sin(%g)\n", x, Pi - x);
+                   return sinx(Pi - x)
+                 elif is(x > Pi/4) then
+                   printf("sin(%g) = cos(%g)\n", x, Pi/2 - x);
+                   return cosx(evalf(Pi/2 - x))
+                 else
+                   printf("sin(%g) = sin(%g)\n", x, x);
+                   return Sinx(evalf(x))
+                 fi
+end;
