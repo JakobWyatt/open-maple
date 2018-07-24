@@ -1,20 +1,15 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
+	"io/ioutil"
 )
 
-//simple example showing use of tokenizer
 func main() {
-	reader := bufio.NewReader(os.Stdin)
-	for {
-		line, err := reader.ReadString('\n')
-		if err != nil {
-			fmt.Println("There was an input error.")
-		} else {
-			fmt.Println(tokenizer(line))
-		}
+	file, err := ioutil.ReadFile("../samples/test_samples/tokenizer_test.txt")
+	if err != nil {
+		fmt.Println("There was a problem reading the file")
+	} else {
+		fmt.Println(tokenizer(string(file)))
 	}
 }
