@@ -12,9 +12,9 @@ import (
 //given a node, it will print information about that node,
 //	and any subnodes
 func printNodes(root tree) {
-	fmt.Printf("Group: %sValue: %s", String(root.group), root.value)
+	fmt.Printf("Group: %sValue: %s\n\n", String(root.group), root.value)
 	for _, val := range root.nodes {
-		fmt.Printf("Group: %sValue: %s", String(val.group), val.value)
+		fmt.Printf("Group: %sValue: %s\n", String(val.group), val.value)
 	}
 }
 

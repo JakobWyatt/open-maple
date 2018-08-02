@@ -12,6 +12,7 @@ const (
 	operate
 	variable
 	constant
+	root
 )
 
 type tree struct {
