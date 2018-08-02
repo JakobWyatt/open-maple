@@ -1,0 +1,7 @@
+Packages:
+github.com/golang-collections/collections/stack
+    Stack implementation used to help display trees on the command line.
+
+Tools:
+golang.org/x/tools/cmd/stringer
+    Used to find a textual representation of an enum, helpful for quick debugging.
