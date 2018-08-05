@@ -19,16 +19,6 @@ type tree struct {
 	value string
 }
 
-//inStringArray checks if a value is in an array
-func inStringArray(val string, array []string) bool {
-	for _, currentVal := range array {
-		if val == currentVal {
-			return true
-		}
-	}
-	return false
-}
-
 //acceptTokenValue checks if a token's value matches any strings in an array
 //if the array is empty
 //	it is assumed there are no constraints on the tokens value,
@@ -37,7 +27,7 @@ func acceptTokenValue(val string, array []string) bool {
 	if len(array) == 0 {
 		return true
 	}
-	return inStringArray(val, array)
+	return inArray(val, array)
 }
 
 //splitParse gets an array of tokens
