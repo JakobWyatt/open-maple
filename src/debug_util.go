@@ -65,3 +65,25 @@ func treeLook(root tree) {
 
 	}
 }
+
+//treeEqual tests if two trees are exactly equal,
+//	including equality of all subnodes
+//Does not test if the nodes have the same memory address.
+func treeEqual(root1 tree, root2 tree) bool {
+	//check if the root nodes are equal
+	if root1.value != root2.value || root1.group != root2.group {
+		return false
+	}
+	//check that we can iterate evenly over all subNodes
+	if len(root1.nodes) != len(root2.nodes) {
+		return false
+	}
+
+	for i := range root1.nodes {
+		if !treeEqual(*root1.nodes[i], *root2.nodes[i]) {
+			return false
+		}
+	}
+
+	return true
+}
