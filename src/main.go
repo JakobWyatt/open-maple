@@ -11,7 +11,7 @@ func main() {
 		fmt.Println("There was a problem reading the file")
 	} else {
 		tokens := tokenizer(string(file))
-		astRoot := astBuilder(tokens, tree{})
+		astRoot := astBuilder(tokens)
 		printTokens(tokens)
 		treeLook(astRoot)
 	}
