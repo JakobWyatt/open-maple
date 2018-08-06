@@ -100,6 +100,8 @@ func tokenizer(input string) []token {
 			tokenBuilder.WriteRune(char)
 		}
 	}
+	//push the final token
+	pushToken()
 
 	return tokens
 }

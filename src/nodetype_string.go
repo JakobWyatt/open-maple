@@ -4,9 +4,9 @@ package main
 
 import "strconv"
 
-const _nodeType_name = "assignoperatevariableconstant"
+const _nodeType_name = "assignoperatevariableconstantroot"
 
-var _nodeType_index = [...]uint8{0, 6, 13, 21, 29}
+var _nodeType_index = [...]uint8{0, 6, 13, 21, 29, 33}
 
 func (i nodeType) String() string {
 	if i < 0 || i >= nodeType(len(_nodeType_index)-1) {

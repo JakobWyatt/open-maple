@@ -11,6 +11,7 @@ const (
 	operate
 	variable
 	constant
+	root
 )
 
 type tree struct {
@@ -57,7 +58,7 @@ func splitParse(toSplit tokenType, subNodeType nodeType, tokens []token, root tr
 //	which are then parsed by parser
 func astBuilder(tokens []token) tree {
 	//seperate into statements
-	var root tree
+	root := tree{group: root}
 	lastStatementSplit := -1
 	for i, currentToken := range tokens {
 		if currentToken.group == statementDelim {
