@@ -1,18 +1,17 @@
 package main
 
-func main() { /*
-		file, err := ioutil.ReadFile("../samples/test_samples/multi-statement-assign.txt")
-		if err != nil {
-			fmt.Println("There was a problem reading the file")
-		} else {
-			tokens := tokenizer(string(file))
-			astRoot := astBuilder(tokens)
-			printTokens(tokens)
-			treeLook(astRoot)
-		}*/
+import "fmt"
 
-	tokens := tokenizer("6**9; ")
-	astRoot := astBuilder(tokens)
+func main() {
+	tokens, err := tokenizer("6*+/4 65;")
 	printTokens(tokens)
-	treeLook(astRoot)
+	if err != nil {
+		fmt.Println(err.Error())
+	} else {
+		root, err := astBuilder(tokens)
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+		treeLook(root)
+	}
 }

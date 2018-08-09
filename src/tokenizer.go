@@ -23,7 +23,7 @@ type token struct {
 
 //tokenizer iterates through a string and builds a slice of tokens.
 //This slice of tokens can then be built into an AST by the parser function.
-func tokenizer(input string) []token {
+func tokenizer(input string) ([]token, error) {
 	var tokens []token
 
 	var tokenBuilder strings.Builder
@@ -103,5 +103,5 @@ func tokenizer(input string) []token {
 	//push the final token
 	pushToken()
 
-	return tokens
+	return tokens, checkTokens(tokens)
 }

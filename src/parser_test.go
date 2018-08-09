@@ -7,7 +7,7 @@ import (
 
 func expectedOutputMultiStatementAssign() tree {
 	//create nodes, then build tree
-	root := tree{group: root}
+	root := tree{group: rootNode}
 	assign0 := tree{group: assign, value: ":="}
 	assign1 := tree{group: assign, value: ":="}
 	multiply0 := tree{group: operate, value: "*"}
