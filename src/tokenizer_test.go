@@ -11,7 +11,11 @@ func TestTokenizer(test *testing.T) {
 	if err != nil {
 		test.Fatal("Could not read test file.")
 	}
-	tokenizerOutput := tokenizer(string(file))
+	tokenizerOutput, err := tokenizer(string(file))
+
+	if err != nil {
+		test.Fatal("Tokenizer detected errors where there were none.")
+	}
 
 	expectedOutput := []token{
 		token{value: "quadratic_user", group: name},

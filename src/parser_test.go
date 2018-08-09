@@ -45,8 +45,15 @@ func TestParser(test *testing.T) {
 	if err != nil {
 		test.Fatal("Could not read test file.")
 	}
+	tokens, err := tokenizer(string(file))
+	if err != nil {
+		test.Fatal("Error_check detected token errors where there were none")
+	}
 
-	parserOutput := astBuilder(tokenizer(string(file)))
+	parserOutput, err := astBuilder(tokens)
+	if err != nil {
+		test.Fatal("Error_check detected errors where there were none.")
+	}
 
 	expectedOutput := expectedOutputMultiStatementAssign()
 
