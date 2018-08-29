@@ -14,21 +14,38 @@ import (
 func execPrint() {
 	maple := interpreter()
 	var symbolTable map[string]interface{}
+	var codeErr error
+
 	reader := bufio.NewReader(os.Stdin)
+	var input string
+	var inputErr error
 
 	fmt.Println("Enter expressions to evaluate them. " +
 		"Enter 'exit' to print a list of all current variables, " +
 		"and exit the program.")
 
-	input, err := reader.ReadString('\n')
-	for input != "exit\n" && err == nil {
-		symbolTable, err = maple(input)
-		input, err = reader.ReadString('\n')
+	keepGoing := true
+	for keepGoing {
+		input, inputErr = reader.ReadString('\n')
+		if inputErr != nil {
+			keepGoing = false
+		} else if input == "exit\n" {
+			keepGoing = false
+		} else {
+			symbolTable, codeErr = maple(input)
+			if codeErr != nil {
+				keepGoing = false
+			}
+		}
 	}
 
-	if err != nil {
-		fmt.Println(err.Error())
+	if codeErr != nil {
+		fmt.Println(codeErr.Error())
 	}
+	if inputErr != nil {
+		fmt.Println(inputErr.Error())
+	}
+
 	printSymbols(symbolTable)
 }
 
