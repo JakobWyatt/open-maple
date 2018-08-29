@@ -3,9 +3,42 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"bufio"
+	"os"
 
 	"github.com/golang-collections/collections/stack"
 )
+
+//execPrint executes statements until the user enters exit,
+//	where the program prints the value of all current variables
+func execPrint () {
+	maple := interpreter()
+	var symbolTable map[string]interface{}
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n');
+
+	fmt.Println("Enter expressions to evaluate them. " +
+		"Enter 'exit' to print a list of all current variables, " +
+		"and exit the program.")
+
+	for input != "exit" && err == nil {
+		symbolTable, err = maple(input)
+		input, err = reader.ReadString('\n');
+	}
+
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	printSymbols(symbolTable)
+}
+
+//printSymbols prints all values in a symbolTable
+//	This function assumes that all values in symbolTable are float64
+func printSymbols(symbolTable map[string]interface{}) {
+	for key, val := range symbolTable {
+		fmt.Printf("%s: %f\n", key, val.(float64))
+	}
+}
 
 //printNodes helps the user debug an AST
 //given a node, it will print information about that node,
