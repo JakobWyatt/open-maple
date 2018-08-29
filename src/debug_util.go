@@ -1,29 +1,29 @@
 package main
 
 import (
-	"fmt"
-	"strconv"
 	"bufio"
+	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/golang-collections/collections/stack"
 )
 
 //execPrint executes statements until the user enters exit,
 //	where the program prints the value of all current variables
-func execPrint () {
+func execPrint() {
 	maple := interpreter()
 	var symbolTable map[string]interface{}
 	reader := bufio.NewReader(os.Stdin)
-	input, err := reader.ReadString('\n');
 
 	fmt.Println("Enter expressions to evaluate them. " +
 		"Enter 'exit' to print a list of all current variables, " +
 		"and exit the program.")
 
-	for input != "exit" && err == nil {
+	input, err := reader.ReadString('\n')
+	for input != "exit\n" && err == nil {
 		symbolTable, err = maple(input)
-		input, err = reader.ReadString('\n');
+		input, err = reader.ReadString('\n')
 	}
 
 	if err != nil {

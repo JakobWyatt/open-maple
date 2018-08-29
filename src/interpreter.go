@@ -5,7 +5,7 @@ func frontEnd(code string) (tree, error) {
 	err = nil
 	var root tree
 
-	tokens, err := tokenizer(code);
+	tokens, err := tokenizer(code)
 	if err == nil {
 		root, err = astBuilder(tokens)
 	}
@@ -21,7 +21,7 @@ func run(code string, symbolTable map[string]interface{}) (map[string]interface{
 	if err == nil {
 		symbolTable, err = treeWalker(root, symbolTable)
 	}
-	
+
 	return symbolTable, err
 }
 
@@ -31,7 +31,7 @@ func run(code string, symbolTable map[string]interface{}) (map[string]interface{
 func interpreter() func(string) (map[string]interface{}, error) {
 	var err error
 	err = nil
-	var symbolTable map[string]interface{}
+	symbolTable := make(map[string]interface{})
 
 	//TODO: func should not return symbolTable,
 	//	however until functions are properly implemented,
