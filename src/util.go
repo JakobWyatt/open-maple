@@ -4,6 +4,25 @@ import (
 	"reflect"
 )
 
+//simple mathematical functions to pass to other functions
+type binaryFunc func(float64, float64) float64
+
+func add(a, b float64) float64 {
+	return a + b
+}
+
+func subtract(a, b float64) float64 {
+	return a - b
+}
+
+func multiply(a, b float64) float64 {
+	return a * b
+}
+
+func divide(a, b float64) float64 {
+	return a / b
+}
+
 //inArray checks if a value is in an array
 func inArray(val interface{}, array interface{}) bool {
 	if reflect.TypeOf(array).Kind() != reflect.Slice {
