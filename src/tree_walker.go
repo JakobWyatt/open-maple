@@ -41,7 +41,6 @@ func processOperator(root tree, symbolTable map[string]interface{}) (interface{}
 	case "/":
 		nodeValue, err = binaryEvaluate(root, symbolTable, divide)
 	}
-
 	return nodeValue, err
 }
 
