@@ -3,7 +3,9 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
+	"reflect"
 	"strconv"
 
 	"github.com/golang-collections/collections/stack"
@@ -136,4 +138,50 @@ func treeEqual(root1 tree, root2 tree) bool {
 	}
 
 	return true
+}
+
+//checks if the two symbolTables are equal to eachother
+//it does this by checking that each entry in the tables are equal
+//	this is done via the comparison operator, however if the value is a float,
+//	the function uses floatEqual to determine if the two tables are the same
+func symbolTableEqual(a, b map[string]interface{}) bool {
+	//if the two tables have equal size, then we can iterate over a,
+	// and know that there are no 'hidden' elements in b
+	if len(a) != len(b) {
+		return false
+	}
+
+	//a is iterated over.
+	//we then make 2 checks:
+	//	if the key is in b,
+	//	and if both values are equal
+	for key, valA := range a {
+		valB, ok := b[key]
+		//is key in b?
+		if ok == false {
+			return false
+		}
+		//are the types the same?
+		if reflect.TypeOf(valA) != reflect.TypeOf(valB) {
+			return false
+		}
+		//if the type is a float, then use floatEqual
+		//else, use the comparision operator
+		if _, ok := valA.(float64); ok {
+			if !floatEqual(valA.(float64), valB.(float64)) {
+				return false
+			}
+		} else {
+			if valA != valB {
+				return false
+			}
+		}
+	}
+
+	return true
+}
+
+func floatEqual(a, b float64) bool {
+	tol := 0.0001
+	return math.Abs(a-b) < tol
 }
