@@ -27,13 +27,13 @@ func expectedOutputMultiStatementAssign() tree {
 	num5 := tree{group: constant, value: "5"}
 	num6 := tree{group: constant, value: "6"}
 
-	multiply0.nodes = append(multiply0.nodes, &num12, &e)
-	multiply1.nodes = append(multiply1.nodes, &num345, &multiply0)
+	multiply0.nodes = append(multiply0.nodes, &num345, &num12)
+	multiply1.nodes = append(multiply1.nodes, &multiply0, &e)
 	assign0.nodes = append(assign0.nodes, &awef0, &multiply1)
-	multiply2.nodes = append(multiply2.nodes, &numneg12, &num5)
-	divide.nodes = append(divide.nodes, &num34, &multiply2)
+	divide.nodes = append(divide.nodes, &num34, &numneg12)
+	multiply2.nodes = append(multiply2.nodes, &divide, &num5)
 	multiply3.nodes = append(multiply3.nodes, &num6, &awef1)
-	add.nodes = append(add.nodes, &divide, &multiply3)
+	add.nodes = append(add.nodes, &multiply2, &multiply3)
 	assign1.nodes = append(assign1.nodes, &awear, &add)
 	root.nodes = append(root.nodes, &assign0, &assign1)
 
