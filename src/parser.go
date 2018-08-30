@@ -37,7 +37,13 @@ func acceptTokenValue(val string, array []string) bool {
 //	and runs parser on both of these segments
 //splitParse returns root, after subnodes have been added
 func splitParse(toSplit tokenType, subNodeType nodeType, tokens []token, root tree, tokenValues ...string) tree {
-	for i, currentToken := range tokens {
+	//the reason we iterate backwards is so that mathematical statements
+	//	are parsed correctly. If there are operators of equal prededence,
+	//	then leftmost operators are evaluated first, meaning they are
+	//	deeper in the parse tree and are parsed last
+	//Despite this, the left-most tokens will still be parsed as a LH subnode
+	for i := len(tokens) - 1; i >= 0; i-- {
+		currentToken := tokens[i]
 		if currentToken.group == toSplit && acceptTokenValue(currentToken.value, tokenValues) {
 			//create a subnode, build its subtrees, and add it to root
 			subNode := tree{group: subNodeType, value: currentToken.value}
@@ -60,6 +66,7 @@ func astBuilder(tokens []token) (tree, error) {
 	//seperate into statements
 	root := tree{group: rootNode}
 	lastStatementSplit := -1
+
 	for i, currentToken := range tokens {
 		if currentToken.group == statementDelim {
 			root = parser(tokens[lastStatementSplit+1:i], root)
