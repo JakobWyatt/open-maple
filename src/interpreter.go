@@ -7,7 +7,7 @@ func frontEnd(code string) (tree, error) {
 
 	tokens, err := tokenizer(code)
 	if err == nil {
-		root, err = astBuilder(tokens)
+		root, err = parser(tokens)
 	}
 
 	return root, err

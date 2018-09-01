@@ -50,7 +50,7 @@ func TestParser(test *testing.T) {
 		test.Fatal("Error_check detected token errors where there were none")
 	}
 
-	parserOutput, err := astBuilder(tokens)
+	parserOutput, err := parser(tokens)
 	if err != nil {
 		test.Fatal("Error_check detected errors where there were none.")
 	}
