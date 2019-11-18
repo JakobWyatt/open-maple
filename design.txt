@@ -1,0 +1,20 @@
+This document outlines the top level design of open_maple.
+Scope: This document does not intend to describe the detailed implementation
+        of each function or source file.
+    Rather, it is a brief description of the overall architecture
+        of this project, and how the open_maple api should be used.
+
+The main functions that should be used to interact with the open_maple API
+    are stored in interpreter.go.
+
+Interpretation of source code takes place in 3 steps:
+    -Tokenization (tokenizer.go): Splitting of source code into tokens,
+        which resolves ambiguity of characters and makes
+        parsing significantly easier.
+    -Parsing (parser.go): Process tokens into an Abstract Syntax Tree,
+        which determines order of operations etc.
+    -Interpretation (tree_walker.go): Processes the abstract syntax tree,
+        evaluating expressions and resolving types. Variable information,
+        including functions, is stored in a symbolTable
+        (type map[string]interface{}).
+Lower level details are given in source files.

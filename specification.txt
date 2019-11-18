@@ -17,3 +17,8 @@ Any valid mathematical expression containing variables, operators, and numbers i
 Operators currently supported in open_maple are
     Multiplication [*] | Division [/]
     Addition [+] | Subtraction [-]
+
+Code Examples:
+    Assignment:
+        x1 := 6*5 /4/3;
+        y2 := arg01+ -14 * arg01;

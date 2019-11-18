@@ -1,0 +1,33 @@
+Open_maple welcomes contributors!
+If you want to contribute, TODO.txt lists (in order) features that are
+    going to be implemented next.
+If you want to implement a different feature, please file an issue on github,
+    and the maintainers of this project will get in touch.
+
+Rules for contributing:
+    All code must be run through golint, and all tests must pass,
+        before code is added to the repository.
+
+    Tests must be written for each functional unit of the code,
+        and must attempt to cover any edge cases.
+        For example, the tokenizer, parser, and interpreter
+        must all have seperate tests. Despite this, it is encouraged
+        to write more tests, preferably one per function.
+
+    It is encouraged, but not required, to write tests for non-production
+        code stored in debug_util.go
+
+    Each function that is intended to be called outside of its own source file
+        must be at the top of a source file, and seperated via a comment banner.
+            (Refer to any non-test, non-utility source file for an example)
+    Exceptions to this rule are any functions within debug_util.go and util.go,
+        which are all intended to be called outside of its own source file.
+
+Documentation:
+    Each source file, enum group, and function must have a comment above it.
+    Source file: Purpose of file, intended file interface.
+    Enum group: Purpose of enum group
+    Function: Description of function, inputs, and outputs.
+
+    If a term is defined in a source file or design document,
+        it does not need to be redefined in function documentation.

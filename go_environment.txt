@@ -1,3 +1,5 @@
+This document describes the specific go extensions required to build the project.
+
 Packages:
 github.com/golang-collections/collections/stack
     Stack implementation used to help display trees on the command line.
